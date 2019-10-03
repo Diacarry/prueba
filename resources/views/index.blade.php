@@ -67,7 +67,8 @@
                 <h2>{{ $title }}</h2>
             </div>
             @auth
-                <p>usuario registrado y autenticado</p>
+                <p>Ver el listado de usuarios</p>
+                <a href="/users" class="btn btn-primary">yes</a>
             @endauth
             @guest
                 <p>Para hacer uso del aplicativo debe estar registrado y loggeado</p>

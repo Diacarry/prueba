@@ -18,8 +18,8 @@ class AddColumnsUsersTable extends Migration
 
             //$table->string('string')->unique();
             $table->string('descripcion');
-            $table->date('fecha');
-            $table->dateTime('hora');
+            /*$table->date('fecha');
+            $table->dateTime('hora');*/
         });
     }
 
@@ -31,7 +31,7 @@ class AddColumnsUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropIndex('users_email_index');
+            $table->dropIndex('users_id_index');
         });
     }
 }

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -10,9 +14,9 @@ class UserController extends Controller
      * Metodo constructor
      * Implementacion de middleware de autenticacion
      */
-    /*public function __construct() {
+    public function __construct() {
         $this->middleware('auth');
-    }*/
+    }
     /**
      * Display a listing of the resource.
      *
@@ -21,11 +25,11 @@ class UserController extends Controller
     public function index()
     {
         //$user = Auth::user();
-        //$registro = User::all();
-        return view('users'/*, [
-            'data' => $registro,
-            'user' => $user
-        ]*/);
+        $registro = User::all();
+        return view('users', [
+            'data' => $registro/*,
+            'user' => $user*/
+        ]);
     }
 
     /**
@@ -68,10 +72,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        /*$user = User::find($id);
-        return view('modify', [
+        $user = User::find($id);
+        return view('edit', [
             'usuario' => $user
-        ]);*/
+        ]);
     }
 
     /**
@@ -83,21 +87,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        /*$validatedData = $request->validate([
-            'name'     => 'required|min:5|max:255',
-            'password' => 'required|min:8|max:255',
-            'nickname' => 'required|min:5|max:100',
-            'city'     => 'required|min:3|max:255',
-            'perfil'   => 'required',
+        $validatedData = $request->validate([
+            'name'        => 'required|min:5|max:255',
+            'password'    => 'required|min:8|max:255',
+            'descripcion' => 'required|min:20|max:255',
         ]);
         $registro = User::find($id);
         $registro->name = $request->get('name');
         $registro->password = Hash::make($request->get('password'));
-        $registro->nickname = $request->get('nickname');
-        $registro->city = $request->get('city');
-        $registro->perfil = $request->get('perfil');
+        $registro->descripcion = $request->get('descripcion');
         $registro->save();
-        return redirect('users');*/
+        return redirect('users');
     }
 
     /**
@@ -108,8 +108,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        /*$registro = User::find($id);
+        $registro = User::find($id);
         $registro->delete();
-        return redirect('users');*/
+        return redirect('users');
     }
 }

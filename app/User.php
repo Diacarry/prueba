@@ -13,7 +13,7 @@ class User extends Authenticatable
      *
      * @var string
      */
-    protected $connection = 'pgsql';
+    //protected $connection = 'pgsql';
     use Notifiable;
     /**
      * The table associated with the model.
@@ -59,7 +59,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id','name', 'email', 'password', 'descripcion', 'fecha', 'hora',
+        'id','name', 'email', 'password', 'descripcion', /*'fecha', 'hora',*/
     ];
 
     /**
