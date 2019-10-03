@@ -1,6 +1,6 @@
 @extends('layouts.blank')
 
-@section('name')
+@section('styleDefault')
     <!-- Styles -->
     <style>
         html, body {
