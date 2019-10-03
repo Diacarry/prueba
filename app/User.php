@@ -8,6 +8,12 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    /**
+     * The connection name for the model.
+     *
+     * @var string
+     */
+    protected $connection = 'pgsql';
     use Notifiable;
     /**
      * The table associated with the model.
